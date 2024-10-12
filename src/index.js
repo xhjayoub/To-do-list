@@ -11,5 +11,4 @@ const taskSide = DOM.makeElement("div");
 DOM.addClass(taskSide,"taskSide");
 
 
-DOM.appendElement(mainSide,"body");
-DOM.appendElement(taskSide,"body");
+DOM.appendMultipleElements([mainSide, taskSide], "body");
