@@ -11,4 +11,7 @@ class DOM {
     static removeClass(element, className) {
         element.classList.remove(className);
     }
+    static appendElement(element, selector) {
+        document.querySelector(selector).appendChild(element);
+    }
 }
