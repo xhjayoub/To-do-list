@@ -1,4 +1,3 @@
 // index.js
 import "./styles.css";
-import  { DOMgen } from "./dom.js";
-
+import  { DOM } from "./dom.js";

@@ -1,7 +1,7 @@
-export { DOMgen };
+export { DOM };
 
 // Class For gen DOM
-class DOMgen {
+class DOM {
     static makeElement(element) {
         return document.createElement(element);
     }
