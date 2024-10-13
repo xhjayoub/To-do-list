@@ -30,7 +30,8 @@ addProjBtn.element.addEventListener("click", () => {
     projDialog.element.open = false;
     let proj = generateProj(e.value);
     document.querySelector(".projects").appendChild(proj.element);
-    
+    // Clean dialog
+    e.value = "";
     // TODO: add logic to add project 
 })
 
