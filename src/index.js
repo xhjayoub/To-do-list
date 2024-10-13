@@ -35,3 +35,9 @@ function InitializeTaskSide() {
 }
 
 
+function InitializeApp() {
+    InitializeMainSide();
+    InitializeTaskSide();
+}
+
+InitializeApp();
