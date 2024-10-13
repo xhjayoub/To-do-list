@@ -79,7 +79,7 @@ h6 {
 .mainHeader {
   display: flex;
   gap: 1.2rem;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-top: 5%;
 }
 .projects {
@@ -92,4 +92,7 @@ h6 {
 .proj {
   display: flex;
   gap: 2rem;
+}
+#addProject {
+  cursor: pointer;
 }
