@@ -1,7 +1,7 @@
 import { DOM } from "./dom.js";
 import { generateProjects } from "./generate.js";
 import "./styles.css";
-import { projDialog } from "./elements.js";
+import { dialogContainer } from "./elements.js";
 function InitializeMainSide() {
     // Main side
     const mainSide = new DOM("div");
@@ -37,7 +37,7 @@ function InitializeTaskSide() {
 
     taskSide.appendThisToBody();
 
-    projDialog.appendThisToBody();
+    dialogContainer.appendThisToBody();
 }
 
 

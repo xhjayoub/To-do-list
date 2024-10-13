@@ -93,6 +93,11 @@ h6 {
   display: flex;
   gap: 2rem;
 }
-#addProject {
+#addProject, .proj div:nth-child(2) {
   cursor: pointer;
+}
+#addProj-dialog-container {
+  position: fixed;
+  top: 50%;
+  right: 50%;
 }

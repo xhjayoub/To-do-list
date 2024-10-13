@@ -1,8 +1,11 @@
 import { DOM } from "./dom.js";
-export { projDialog };
+export { dialogContainer };
 import { generateProj } from "./generate.js";
 
 // Add project Dialog
+const dialogContainer = new DOM("div");
+dialogContainer.element.id = "addProj-dialog-container";
+
 const projDialog = new DOM("dialog");
 projDialog.element.id = "addProj-dialog";
 
@@ -43,3 +46,5 @@ addProjBtn.element.addEventListener("click", () => {
 Btns.appendChilds(cancelBtn.element, addProjBtn.element);
 
 projDialog.appendChilds(projName.element, Btns.element);
+
+dialogContainer.appendChilds(projDialog.element);
