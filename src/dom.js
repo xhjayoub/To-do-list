@@ -2,7 +2,7 @@ export { DOM };
 
 class DOM {
     constructor(element, text, id) {
-        this.element = document.createElement("div");
+        this.element = document.createElement(element);
         if (text !== undefined) {
             this.element.innerHTML = text;
         } 
