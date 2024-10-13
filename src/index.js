@@ -12,6 +12,12 @@ function InitializeMainSide() {
     mainHeader.addClass("mainHeader");
     const mainTitle = new DOM("div", "My Projects", "mainTitle");
     const addProject = new DOM("div", "+", "addProject");
+    addProject.element.addEventListener("click", () => {
+        let c = document.querySelector("#addProj-dialog");
+        if (!c.open) {
+            c.open = true;
+        }
+    })
 
     mainHeader.appendChilds(mainTitle.element, addProject.element);
     // Projects
