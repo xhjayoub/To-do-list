@@ -1,5 +1,6 @@
 import { DOM } from "./dom.js";
 export { projDialog };
+import { generateProj } from "./generate.js";
 
 // Add project Dialog
 const projDialog = new DOM("dialog");
@@ -21,10 +22,16 @@ const cancelBtn = new DOM("button", "Cancel");
 const addProjBtn = new DOM("button", "Add");
 addProjBtn.element.type = "submit";
 addProjBtn.element.addEventListener("click", () => {
-    if (document.getElementsByClassName("Proj-name-inp").value === undefined) {
+    let e = document.querySelector(".Proj-name-inp");
+    if (e.value === "") {
         alert("Type project name.");
         return false;
     }
+    projDialog.element.open = false;
+    let proj = generateProj(e.value);
+    document.querySelector(".projects").appendChild(proj.element);
+    
+    // TODO: add logic to add project 
 })
 
 Btns.appendChilds(cancelBtn.element, addProjBtn.element);

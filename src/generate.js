@@ -1,5 +1,5 @@
 import { DOM } from "./dom.js";
-export { generateProjects }; 
+export { generateProjects, generateProj }; 
 
 function generateProj(ch) {
     const proj = new DOM("div");
