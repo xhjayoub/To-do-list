@@ -1,6 +1,7 @@
 import { DOM } from "./dom.js";
 import { generateProjects } from "./generate.js";
 import "./styles.css";
+import { projDialog } from "./elements.js";
 // Main side
 const mainSide = new DOM("div");
 mainSide.addClass("mainSide");
@@ -27,3 +28,5 @@ const taskSide = new DOM("div");
 taskSide.addClass("taskSide");
 
 taskSide.appendThisToBody();
+
+projDialog.appendThisToBody();
