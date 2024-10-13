@@ -1,5 +1,5 @@
 import { DOM } from "./dom.js";
-export { generateProj }; 
+export { generateProjects }; 
 
 function generateProj(ch) {
     const proj = new DOM("div");
@@ -12,4 +12,9 @@ function generateProj(ch) {
     proj.appendChilds(projName.element, editProj.element);
 
     return proj;
+}
+function generateProjects(arr, projects) {
+    for (let i = 0; i < arr.length; i++) {
+        projects.appendChilds(generateProj(arr[i]).element);
+    }
 }
