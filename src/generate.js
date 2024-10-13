@@ -7,7 +7,11 @@ function generateProj(ch) {
 
     const projName = new DOM("div", "# " + ch);
 
-    const editProj = new DOM("div", "...");
+    const editProj = new DOM("div", "x");
+    editProj.element.addEventListener("click", (event) => {
+        event.target.parentElement.remove()
+        // TODO: Logic to delete project and its tasks
+    })
 
     proj.appendChilds(projName.element, editProj.element);
 
