@@ -19,6 +19,11 @@ projName.appendChilds(name.element, nameInp.element);
 const Btns = new DOM("div");
 Btns.addClass("addProj-dialog-btns");
 const cancelBtn = new DOM("button", "Cancel");
+cancelBtn.element.addEventListener("click", () => {
+    let e = document.querySelector(".Proj-name-inp");
+    e.value = "";
+    projDialog.element.open = false;
+})
 const addProjBtn = new DOM("button", "Add");
 addProjBtn.element.type = "submit";
 addProjBtn.element.addEventListener("click", () => {
