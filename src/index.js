@@ -1,5 +1,6 @@
 import { DOM } from "./dom.js";
 import { generateProjects } from "./generate.js";
+import "./styles.css";
 // Main side
 const mainSide = new DOM("div");
 mainSide.addClass("mainSide");
