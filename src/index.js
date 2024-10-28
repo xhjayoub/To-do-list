@@ -22,7 +22,7 @@ function InitializeProjects() {
 
     // Show projects
     const projList = document.createElement("div");
-    projects.forEach(element => {
+    Object.keys(projects).forEach(element => {
         projList.appendChild(generateProject(element));
     });
     // Append to projContainer
