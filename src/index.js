@@ -16,6 +16,13 @@ function InitializeProjects() {
     addProjAction.classList.add("addProj");
     addProjAction.innerHTML = "+";
     // TODO: add action to this + ==> Make it add project
+    addProjAction.addEventListener("click", () => {
+        let projName = prompt("Enter project name : ");
+        if (projName === null) {
+            return false;
+        }
+        projects[projName] = [];
+    })
     // Append (addProjSect) children
     addProjSect.appendChild(addProjSectTitle);
     addProjSect.appendChild(addProjAction);
