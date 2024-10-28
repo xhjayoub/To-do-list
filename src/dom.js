@@ -1,3 +1,5 @@
+import { projects } from "./data.js";
+
 export { generateProject };
 
 function generateProject(projName) {
@@ -11,8 +13,12 @@ function generateProject(projName) {
     const rm = document.createElement("div");
     rm.classList.add("rmProj");
     rm.innerHTML = "X";
-    // TODO: Add remove button action
 
+    rm.addEventListener("click", (el) => {
+        let projName = el.target.parentElement.firstChild.innerHTML;
+        delete projects[projName];
+        el.target.parentElement.remove();
+    })
     // Append everything to proj
     proj.appendChild(name);
     proj.appendChild(rm);
