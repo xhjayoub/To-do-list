@@ -1,4 +1,6 @@
 import "./styles.css";
+import { projects } from "./data.js";
+import { generateProject } from "./dom.js";
 
 function InitializeProjects() {
     const projContainer = document.createElement("div");
@@ -18,8 +20,14 @@ function InitializeProjects() {
     addProjSect.appendChild(addProjSectTitle);
     addProjSect.appendChild(addProjAction);
 
+    // Show projects
+    const projList = document.createElement("div");
+    projects.forEach(element => {
+        projList.appendChild(generateProject(element));
+    });
     // Append to projContainer
     projContainer.appendChild(addProjSect);
+    projContainer.appendChild(projList);
     // Append to body
     document.querySelector("body").appendChild(projContainer);
 }

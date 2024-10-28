@@ -1,3 +1,3 @@
 export { projects };
 
-projects = ["Home","Work","Fitness"]
+let projects = ["Home","Work","Fitness"];
