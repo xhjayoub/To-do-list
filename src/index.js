@@ -1,6 +1,6 @@
 import "./styles.css";
 import { projects } from "./data.js";
-import { generateProject } from "./dom.js";
+import { generateProject, loadProjects } from "./dom.js";
 
 function InitializeProjects() {
     const projContainer = document.createElement("div");
@@ -33,9 +33,7 @@ function InitializeProjects() {
 
     // Show projects
     const projList = document.createElement("div");
-    Object.keys(projects).forEach(element => {
-        projList.appendChild(generateProject(element));
-    });
+    loadProjects(projList);
     // Append to projContainer
     projContainer.appendChild(addProjSect);
     projContainer.appendChild(projList);

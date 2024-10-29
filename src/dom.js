@@ -1,6 +1,6 @@
 import { projects } from "./data.js";
 
-export { generateProject };
+export { generateProject, loadProjects };
 
 function generateProject(projName) {
     const proj = document.createElement("div");
@@ -24,4 +24,10 @@ function generateProject(projName) {
     proj.appendChild(rm);
 
     return proj;
+}
+function loadProjects(projList) {
+    projList.innerHTML = "";
+    Object.keys(projects).forEach(element => {
+        projList.appendChild(generateProject(element));
+    });
 }
