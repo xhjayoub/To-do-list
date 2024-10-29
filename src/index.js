@@ -15,7 +15,7 @@ function InitializeProjects() {
     const addProjAction = document.createElement("div");
     addProjAction.classList.add("addProj");
     addProjAction.innerHTML = "+";
-    // TODO: add action to this + ==> Make it add project
+    // add project button
     addProjAction.addEventListener("click", () => {
         let projName;
         do {
