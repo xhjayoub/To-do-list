@@ -41,4 +41,31 @@ function InitializeProjects() {
     // Append to body
     document.querySelector("body").appendChild(projContainer);
 }
+function InitializeTasks(projName, projTasks) {
+    // Tasks Container
+    const tasksContainer = document.createElement("div");
+    tasksContainer.classList.add("tasksContainer");
+
+    // Title
+    const projTitle = document.createElement("div");
+    projTitle.classList.add("projTitle");
+
+    // List of tasks
+    const tasks = document.createElement("div");
+    tasks.classList.add("tasks");
+
+    // Add task action
+    const addTask = document.createElement("div");
+    addTask.classList.add("addTask");
+    addTask.innerHTML = "Add Task";
+    // TODO: add task action
+
+    // Append everything
+    tasksContainer.appendChild(projTitle);
+    tasksContainer.appendChild(tasks);
+    tasksContainer.appendChild(addTask);
+
+    // Append to body
+    document.querySelector("body").appendChild(tasksContainer);
+}
 InitializeProjects()
