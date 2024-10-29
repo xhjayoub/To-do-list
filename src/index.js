@@ -17,7 +17,11 @@ function InitializeProjects() {
     addProjAction.innerHTML = "+";
     // TODO: add action to this + ==> Make it add project
     addProjAction.addEventListener("click", () => {
-        let projName = prompt("Enter project name : ");
+        let projName;
+        do {
+            projName = prompt("Enter project name : ");
+        } while (Object.keys(projects).includes(projName) || projName === '');
+        
         if (projName === null) {
             return false;
         }
