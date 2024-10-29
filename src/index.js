@@ -26,6 +26,7 @@ function InitializeProjects() {
             return false;
         }
         projects[projName] = [];
+        loadProjects(projList);
     })
     // Append (addProjSect) children
     addProjSect.appendChild(addProjSectTitle);
