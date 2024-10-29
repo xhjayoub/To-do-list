@@ -1,6 +1,6 @@
 import { projects } from "./data.js";
 
-export { generateProject, loadProjects };
+export { loadProjects };
 
 function generateProject(projName) {
     const proj = document.createElement("div");

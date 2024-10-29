@@ -1,6 +1,6 @@
 import "./styles.css";
 import { projects } from "./data.js";
-import { generateProject, loadProjects } from "./dom.js";
+import { loadProjects } from "./dom.js";
 
 function InitializeProjects() {
     const projContainer = document.createElement("div");
