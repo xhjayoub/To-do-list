@@ -1,6 +1,6 @@
 import { projects } from "./data.js";
-
-export { loadProjects };
+import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
+export { loadProjects, generateTask };
 
 function generateProject(projName) {
     const proj = document.createElement("div");
@@ -48,9 +48,11 @@ function generateTask(task) {
     taskName.innerHTML = task.name;
 
     // edit task
-    const edit = document.createElement("svg");
+    const edit = document.createElement("img");
     edit.classList.add("edit");
-    // TODO: Add svg src
+    console.log(threeDots);
+    edit.setAttribute("src", threeDots)
+    
     // TODO: Add edit action
     // Append section 1
     section1.appendChild(checkButton);
