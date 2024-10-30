@@ -31,3 +31,46 @@ function loadProjects(projList) {
         projList.appendChild(generateProject(element));
     });
 }
+function generateTask(task) {
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("task");
+
+    // Section 1
+    const section1 = document.createElement("div");
+    section1.classList.add("taskSect1");
+
+    const checkButton = document.createElement("input");
+    checkButton.setAttribute("type","checkbox");
+    // TODO: Add checkButton action (done and undone the task)
+
+    const taskName = document.createElement("div");
+    taskName.classList.add("taskName");
+    taskName.innerHTML = task.name;
+
+    // edit task
+    const edit = document.createElement("svg");
+    edit.classList.add("edit");
+    // TODO: Add svg src
+    // TODO: Add edit action
+    // Append section 1
+    section1.appendChild(checkButton);
+    section1.appendChild(taskName);
+    section1.appendChild(edit);
+
+    // Section 2 
+    const section2 = document.createElement("div");
+    section2.classList.add("taskSect2");
+
+    const dueDate = document.createElement("div");
+    dueDate.classList.add("dueDate");
+    dueDate.innerHTML = task.dueDate;
+
+    // Append section 2
+    section2.appendChild(dueDate);
+
+    // Append to taskContainer
+    taskContainer.appendChild(section1);
+    taskContainer.appendChild(section2);
+
+    return taskContainer;
+}
