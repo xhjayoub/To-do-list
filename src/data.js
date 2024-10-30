@@ -6,7 +6,14 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.undone();
     } 
+    done() {
+        this.done = true;
+    }
+    undone() {
+        this.done = false
+    }
 }
 
 let projects = {
