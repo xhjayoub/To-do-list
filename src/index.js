@@ -1,6 +1,6 @@
 import "./styles.css";
 import { projects } from "./data.js";
-import { loadProjects } from "./dom.js";
+import { loadProjects, generateTaskPopup } from "./dom.js";
 
 function InitializeProjects() {
     const projContainer = document.createElement("div");
@@ -69,3 +69,4 @@ function InitializeTasks(projName, projTasks) {
     document.querySelector("body").appendChild(tasksContainer);
 }
 InitializeProjects()
+generateTaskPopup();

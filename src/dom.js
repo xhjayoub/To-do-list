@@ -1,6 +1,6 @@
 import { projects } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
-export { loadProjects, generateTask };
+export { loadProjects, generateTask, generateTaskPopup };
 
 function generateProject(projName) {
     const proj = document.createElement("div");
@@ -75,4 +75,78 @@ function generateTask(task) {
     taskContainer.appendChild(section2);
 
     return taskContainer;
+}
+function generateTaskPopup() {
+    const popup = document.createElement("div");
+    popup.classList.add("popup");
+
+    const title = document.createElement("h2");
+    title.innerHTML = "New Task";
+
+    // Task name
+    const taskName = document.createElement("div");
+    const taskNameLabel = document.createElement("label");
+    taskNameLabel.innerHTML = "What is to be done?";
+    taskNameLabel.setAttribute("for","taskNameInp");
+    const taskNameInp = document.createElement("input");
+    taskNameInp.setAttribute("type","text");
+    taskNameInp.setAttribute("id","taskNameInp");
+
+    taskName.appendChild(taskNameLabel);
+    taskName.appendChild(taskNameInp);
+
+    // Description
+    const description = document.createElement("div");
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.innerHTML = "Description (optional)";
+    descriptionLabel.setAttribute("for","descriptionInp");
+    const descriptionInp = document.createElement("input");
+    descriptionInp.setAttribute("type","text");
+    descriptionInp.setAttribute("id","descriptionInp");
+
+    description.appendChild(descriptionLabel);
+    description.appendChild(descriptionInp);
+
+    // Periority
+    const Periority = document.createElement("div");
+    const PeriorityLabel = document.createElement("label");
+    PeriorityLabel.innerHTML = "Periority";
+    const PeriorityList = document.createElement("select");
+    // TODO: Add periority list options
+
+    Periority.appendChild(PeriorityLabel);
+    Periority.appendChild(PeriorityList);
+
+    // Due Date
+    const dueDate = document.createElement("div");
+    const dueDateLabel = document.createElement("label");
+    dueDateLabel.innerHTML = "Due Date";
+    const dueDateInp = document.createElement("input");
+    dueDateInp.setAttribute("type","date");
+    
+    dueDate.appendChild(dueDateLabel);
+    dueDate.appendChild(dueDateInp);
+
+    // Buttons
+    const btnCont = document.createElement("div");
+    const cancel = document.createElement("button");
+    cancel.innerHTML = "Cancel";
+    // TODO: add cancel action
+
+    const createBtn = document.createElement("button");
+    createBtn.innerHTML = "Create";
+    // TODO: add create action
+
+    btnCont.appendChild(cancel);
+    btnCont.appendChild(createBtn);
+
+    // Append to popup
+    popup.appendChild(title);
+    popup.appendChild(taskName);
+    popup.appendChild(description);
+    popup.appendChild(Periority);
+    popup.appendChild(dueDate);
+    popup.appendChild(btnCont);
+    document.querySelector("body").appendChild(popup);
+
 }
