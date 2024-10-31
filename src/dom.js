@@ -20,15 +20,14 @@ function generateProject(projName) {
         el.target.parentElement.remove();
     })
     // Append everything to proj
-    proj.appendChild(name);
-    proj.appendChild(rm);
+    proj.append(name,rm);
 
     return proj;
 }
 function loadProjects(projList) {
     projList.innerHTML = "";
     Object.keys(projects).forEach(element => {
-        projList.appendChild(generateProject(element));
+        projList.append(generateProject(element));
     });
 }
 function generateTask(task) {
@@ -55,9 +54,7 @@ function generateTask(task) {
     
     // TODO: Add edit action
     // Append section 1
-    section1.appendChild(checkButton);
-    section1.appendChild(taskName);
-    section1.appendChild(edit);
+    section1.append(checkButton,taskName, edit);
 
     // Section 2 
     const section2 = document.createElement("div");
@@ -68,11 +65,10 @@ function generateTask(task) {
     dueDate.innerHTML = task.dueDate;
 
     // Append section 2
-    section2.appendChild(dueDate);
+    section2.append(dueDate);
 
     // Append to taskContainer
-    taskContainer.appendChild(section1);
-    taskContainer.appendChild(section2);
+    taskContainer.append(section1, section2);
 
     return taskContainer;
 }
@@ -92,8 +88,7 @@ function generateTaskPopup() {
     taskNameInp.setAttribute("type","text");
     taskNameInp.setAttribute("id","taskNameInp");
 
-    taskName.appendChild(taskNameLabel);
-    taskName.appendChild(taskNameInp);
+    taskName.append(taskNameLabel, taskNameInp);
 
     // Description
     const description = document.createElement("div");
@@ -104,8 +99,7 @@ function generateTaskPopup() {
     descriptionInp.setAttribute("type","text");
     descriptionInp.setAttribute("id","descriptionInp");
 
-    description.appendChild(descriptionLabel);
-    description.appendChild(descriptionInp);
+    description.append(descriptionLabel, descriptionInp);
 
     // Periority
     const Periority = document.createElement("div");
@@ -114,8 +108,7 @@ function generateTaskPopup() {
     const PeriorityList = document.createElement("select");
     // TODO: Add periority list options
 
-    Periority.appendChild(PeriorityLabel);
-    Periority.appendChild(PeriorityList);
+    Periority.append(PeriorityLabel, PeriorityList);
 
     // Due Date
     const dueDate = document.createElement("div");
@@ -124,8 +117,7 @@ function generateTaskPopup() {
     const dueDateInp = document.createElement("input");
     dueDateInp.setAttribute("type","date");
     
-    dueDate.appendChild(dueDateLabel);
-    dueDate.appendChild(dueDateInp);
+    dueDate.append(dueDateLabel, dueDateInp);
 
     // Buttons
     const btnCont = document.createElement("div");
@@ -137,16 +129,10 @@ function generateTaskPopup() {
     createBtn.innerHTML = "Create";
     // TODO: add create action
 
-    btnCont.appendChild(cancel);
-    btnCont.appendChild(createBtn);
+    btnCont.append(cancel,createBtn);
 
     // Append to popup
-    popup.appendChild(title);
-    popup.appendChild(taskName);
-    popup.appendChild(description);
-    popup.appendChild(Periority);
-    popup.appendChild(dueDate);
-    popup.appendChild(btnCont);
+    popup.append(title,taskName,description,Periority,dueDate,btnCont);
     document.querySelector("body").appendChild(popup);
 
 }
