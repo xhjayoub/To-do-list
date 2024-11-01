@@ -137,7 +137,7 @@ function generateTaskPopup() {
         descriptionInp.value = "";
         PeriorityList.value = "Low";
         dueDateInp.value = "";
-        // TODO: Make popup disappear
+        popupContainer.style.visibility = "hidden";
     })
 
     const createBtn = document.createElement("button");
