@@ -2,6 +2,13 @@ import "./styles.css";
 import { projects } from "./data.js";
 import { loadProjects, generateTaskPopup, appendToBody } from "./dom.js";
 
+function projAndTasks(proj, tasks) {
+    const todoContainer = document.createElement("div");
+    todoContainer.classList.add("todoContainer");
+
+    todoContainer.append(proj, tasks);
+    appendToBody(todoContainer);
+}
 function InitializeProjects() {
     const projContainer = document.createElement("div");
     projContainer.classList.add("projContainer");
@@ -36,8 +43,8 @@ function InitializeProjects() {
     loadProjects(projList);
     // Append to projContainer
     projContainer.append(addProjSect,projList);
-    // Append to body
-    appendToBody(projContainer);
+
+    return projContainer;
 }
 function InitializeTasks(projName, projTasks) {
     // Tasks Container
@@ -61,8 +68,7 @@ function InitializeTasks(projName, projTasks) {
     // Append everything
     tasksContainer.append(projTitle, tasks, addTask);
 
-    // Append to body
-    appendToBody(tasksContainer);
+    return tasksContainer;
 }
-InitializeProjects()
+projAndTasks(InitializeProjects(), InitializeTasks());
 generateTaskPopup();
