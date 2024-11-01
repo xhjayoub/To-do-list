@@ -75,6 +75,9 @@ function generateTask(task) {
     return taskContainer;
 }
 function generateTaskPopup() {
+    const popupContainer = document.createElement("div");
+    popupContainer.classList.add("popupContainer");
+
     const popup = document.createElement("div");
     popup.classList.add("popup");
 
@@ -151,6 +154,7 @@ function generateTaskPopup() {
 
     // Append to popup
     popup.append(title,taskName,description,Periority,dueDate,btnCont);
-    appendToBody(popup);
+    popupContainer.append(popup);
+    appendToBody(popupContainer);
 
 }
