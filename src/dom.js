@@ -1,7 +1,9 @@
 import { projects } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
-export { loadProjects, generateTask, generateTaskPopup };
-
+export { loadProjects, generateTask, generateTaskPopup, appendToBody };
+function appendToBody(node) {
+    document.querySelector("body").append(node);
+}
 function generateProject(projName) {
     const proj = document.createElement("div");
     proj.classList.add("proj");
@@ -133,6 +135,6 @@ function generateTaskPopup() {
 
     // Append to popup
     popup.append(title,taskName,description,Periority,dueDate,btnCont);
-    document.querySelector("body").appendChild(popup);
+    appendToBody(popup);
 
 }
