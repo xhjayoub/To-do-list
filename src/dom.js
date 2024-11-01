@@ -108,8 +108,12 @@ function generateTaskPopup() {
     const PeriorityLabel = document.createElement("label");
     PeriorityLabel.innerHTML = "Periority";
     const PeriorityList = document.createElement("select");
-    // TODO: Add periority list options
-
+    const pList = ["Low","Medium", "High"];
+    pList.forEach((element) => {
+        const p = document.createElement("option");
+        p.innerHTML = element;
+        PeriorityList.append(p);
+    });
     Periority.append(PeriorityLabel, PeriorityList);
 
     // Due Date
