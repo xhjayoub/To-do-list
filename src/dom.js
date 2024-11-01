@@ -139,7 +139,13 @@ function generateTaskPopup() {
 
     const createBtn = document.createElement("button");
     createBtn.innerHTML = "Create";
-    // TODO: add create action
+    createBtn.addEventListener("click", () => {
+        if (taskNameInp.value === "") {
+            alert("Enter task name !");
+            return false;
+        }
+        // TODO: Add task
+    })
 
     btnCont.append(cancel,createBtn);
 
