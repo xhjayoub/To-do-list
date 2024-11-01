@@ -29,17 +29,15 @@ function InitializeProjects() {
         loadProjects(projList);
     })
     // Append (addProjSect) children
-    addProjSect.appendChild(addProjSectTitle);
-    addProjSect.appendChild(addProjAction);
+    addProjSect.append(addProjSectTitle, addProjAction);
 
     // Show projects
     const projList = document.createElement("div");
     loadProjects(projList);
     // Append to projContainer
-    projContainer.appendChild(addProjSect);
-    projContainer.appendChild(projList);
+    projContainer.append(addProjSect,projList);
     // Append to body
-    document.querySelector("body").appendChild(projContainer);
+    appendToBody(projContainer);
 }
 function InitializeTasks(projName, projTasks) {
     // Tasks Container
@@ -61,9 +59,7 @@ function InitializeTasks(projName, projTasks) {
     // TODO: add task action
 
     // Append everything
-    tasksContainer.appendChild(projTitle);
-    tasksContainer.appendChild(tasks);
-    tasksContainer.appendChild(addTask);
+    tasksContainer.append(projTitle, tasks, addTask);
 
     // Append to body
     appendToBody(tasksContainer);
