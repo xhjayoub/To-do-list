@@ -63,7 +63,10 @@ function InitializeTasks(projName, projTasks) {
     const addTask = document.createElement("div");
     addTask.classList.add("addTask");
     addTask.innerHTML = "Add Task";
-    // TODO: add task action
+    addTask.addEventListener("click", () => {
+        document.querySelector(".popupContainer").style.visibility = "visible";
+        // TODO: define what task
+    })
 
     // Append everything
     tasksContainer.append(projTitle, tasks, addTask);
