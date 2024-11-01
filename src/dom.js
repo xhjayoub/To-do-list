@@ -129,7 +129,13 @@ function generateTaskPopup() {
     const btnCont = document.createElement("div");
     const cancel = document.createElement("button");
     cancel.innerHTML = "Cancel";
-    // TODO: add cancel action
+    cancel.addEventListener("click", () => {
+        taskNameInp.value = "";
+        descriptionInp.value = "";
+        PeriorityList.value = "Low";
+        dueDateInp.value = "";
+        // TODO: Make popup disappear
+    })
 
     const createBtn = document.createElement("button");
     createBtn.innerHTML = "Create";
