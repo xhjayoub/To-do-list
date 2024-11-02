@@ -46,7 +46,7 @@ function InitializeProjects() {
 
     return projContainer;
 }
-function InitializeTasks(projName, projTasks) {
+function InitializeTasks() {
     // Tasks Container
     const tasksContainer = document.createElement("div");
     tasksContainer.classList.add("tasksContainer");
