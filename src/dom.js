@@ -9,6 +9,7 @@ function addTask(selectedProj, taskName, description, dueDate, priority) {
 function loadTasks(projName) {
     document.querySelector(".projTitle").innerHTML = projName;
     let tasksCont = document.querySelector(".tasks");
+    tasksCont.innerHTML = "";
     projects[projName].forEach((task) => {
         tasksCont.append(generateTask(task));
     })
@@ -45,6 +46,7 @@ function loadProjects(projList) {
     });
 }
 function generateTask(task) {
+    
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("task");
 
@@ -95,7 +97,10 @@ function generateTask(task) {
 
     // Append to taskContainer
     taskContainer.append(section1, section2);
-
+    if (task.done) {
+        taskContainer.classList.add("done");
+        checkButton.checked = true;
+    }
     return taskContainer;
 }
 function generateTaskPopup() {
