@@ -6,12 +6,12 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.undone();
+        this.makeItUndone();
     } 
-    done() {
+    makeItDone() {
         this.done = true;
     }
-    undone() {
+    makeItUndone() {
         this.done = false
     }
 }
