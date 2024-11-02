@@ -1,4 +1,4 @@
-export { projects };
+export { projects, selectedProj };
 
 class Task {
     constructor(name, description, dueDate, priority) {
@@ -17,7 +17,8 @@ class Task {
 }
 
 let projects = {
-    Home:[],
+    Home:[new Task("Clean the house","","","Low"), new Task("go out","to the beach","12-10-2022","Low")],
     Work:[],
     Fitness:[]
 }
+let selectedProj = Object.keys(projects)[0];
