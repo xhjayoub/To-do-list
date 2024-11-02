@@ -1,6 +1,14 @@
 import { projects } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
-export { loadProjects, generateTask, generateTaskPopup, appendToBody };
+export { loadProjects, generateTask, generateTaskPopup, appendToBody, loadTasks };
+
+function loadTasks(projName) {
+    document.querySelector(".projTitle").innerHTML = projName;
+    let tasksCont = document.querySelector(".tasks");
+    projects[projName].forEach((task) => {
+        tasksCont.append(generateTask(task));
+    })
+}
 function appendToBody(node) {
     document.querySelector("body").append(node);
 }
