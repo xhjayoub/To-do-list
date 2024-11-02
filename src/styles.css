@@ -23,3 +23,9 @@ body {
     height: 100vh;
     margin: 0;
 }
+.done {
+    opacity: 50%;
+}
+.task, .done {
+    transition: 0.5s;
+}
