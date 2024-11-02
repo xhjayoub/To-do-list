@@ -50,7 +50,15 @@ function generateTask(task) {
 
     const checkButton = document.createElement("input");
     checkButton.setAttribute("type","checkbox");
-    // TODO: Add checkButton action (done and undone the task)
+    checkButton.addEventListener("click",() => {
+        if (checkButton.checked) {
+            task.makeItDone();
+            taskContainer.classList.add("done");
+        } else {
+            task.makeItUndone();
+            taskContainer.classList.remove("done");
+        }
+    })
 
     const taskName = document.createElement("div");
     taskName.classList.add("taskName");
@@ -72,7 +80,12 @@ function generateTask(task) {
 
     const dueDate = document.createElement("div");
     dueDate.classList.add("dueDate");
-    dueDate.innerHTML = task.dueDate;
+    if (task.dueDate === "") {
+        dueDate.innerHTML = "No due date.";
+    } else {
+        dueDate.innerHTML = task.dueDate;
+    }
+    
 
     // Append section 2
     section2.append(dueDate);
