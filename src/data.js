@@ -1,4 +1,4 @@
-export { projects, selectedProj };
+export { projects, selectedProj, Task };
 
 class Task {
     constructor(name, description, dueDate, priority) {

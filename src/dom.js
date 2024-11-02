@@ -1,7 +1,11 @@
-import { projects } from "./data.js";
+import { projects, Task, selectedProj } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
 export { loadProjects, generateTask, generateTaskPopup, appendToBody, loadTasks };
 
+function addTask(selectedProj, taskName, description, dueDate, priority) {
+    const newTask = new Task(taskName,description,dueDate,priority);
+    projects[selectedProj].push(newTask);
+}
 function loadTasks(projName) {
     document.querySelector(".projTitle").innerHTML = projName;
     let tasksCont = document.querySelector(".tasks");
@@ -67,7 +71,6 @@ function generateTask(task) {
     // edit task
     const edit = document.createElement("img");
     edit.classList.add("edit");
-    console.log(threeDots);
     edit.setAttribute("src", threeDots)
     
     // TODO: Add edit action
@@ -168,7 +171,9 @@ function generateTaskPopup() {
             alert("Enter task name !");
             return false;
         }
-        // TODO: Add task
+        addTask(selectedProj, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
+        popupContainer.style.visibility = "hidden";
+        loadTasks(selectedProj);
     })
 
     btnCont.append(cancel,createBtn);
