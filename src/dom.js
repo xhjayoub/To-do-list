@@ -156,11 +156,14 @@ function generateTaskPopup() {
     const btnCont = document.createElement("div");
     const cancel = document.createElement("button");
     cancel.innerHTML = "Cancel";
-    cancel.addEventListener("click", () => {
+    function clearTask() {
         taskNameInp.value = "";
         descriptionInp.value = "";
         PeriorityList.value = "Low";
         dueDateInp.value = "";
+    }
+    cancel.addEventListener("click", () => {
+        clearTask();
         popupContainer.style.visibility = "hidden";
     })
 
@@ -174,6 +177,7 @@ function generateTaskPopup() {
         addTask(selectedProj, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
         popupContainer.style.visibility = "hidden";
         loadTasks(selectedProj);
+        clearTask();
     })
 
     btnCont.append(cancel,createBtn);
