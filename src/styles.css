@@ -29,3 +29,7 @@ body {
 .task, .done {
     transition: 0.5s;
 }
+.todoContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
