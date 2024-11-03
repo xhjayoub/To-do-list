@@ -32,6 +32,7 @@ body {
 .todoContainer {
     display: grid;
     grid-template-columns: 20% 80%;
+    height: 100%;
 }
 .tasksContainer {
     padding: 20px;
@@ -39,10 +40,22 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20%;
 }
 .task {
     display: flex;
+    flex-direction: column;
+}
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.taskSect1 {
+    display: flex;
+    gap: 10px;
 }
 .edit {
     width: 1.5rem;
+    height: auto;
 }
