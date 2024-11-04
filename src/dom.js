@@ -170,6 +170,7 @@ function generateTaskPopup() {
     cancel.addEventListener("click", () => {
         clearTask();
         popupContainer.style.visibility = "hidden";
+        document.querySelector("body").style.backgroundColor = "transparent";
     })
 
     const createBtn = document.createElement("button");
@@ -183,6 +184,7 @@ function generateTaskPopup() {
         popupContainer.style.visibility = "hidden";
         loadTasks(selectedProj);
         clearTask();
+        document.querySelector("body").style.backgroundColor = "transparent";
     })
 
     btnCont.append(cancel,createBtn);

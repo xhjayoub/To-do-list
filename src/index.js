@@ -65,6 +65,7 @@ function InitializeTasks() {
     addTask.innerHTML = "Add Task";
     addTask.addEventListener("click", () => {
         document.querySelector(".popupContainer").style.visibility = "visible";
+        document.querySelector("body").style.backgroundColor = "hsla(360 100% 0% / 0.19)";
         // TODO: define what task
     })
 
