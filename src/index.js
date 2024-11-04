@@ -52,7 +52,7 @@ function InitializeTasks() {
     tasksContainer.classList.add("tasksContainer");
 
     // Title
-    const projTitle = document.createElement("div");
+    const projTitle = document.createElement("h1");
     projTitle.classList.add("projTitle");
 
     // List of tasks
