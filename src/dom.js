@@ -184,9 +184,9 @@ function generateTaskPopup() {
             alert("Enter task name !");
             return false;
         }
-        addTask(selectedProj, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
+        addTask(proj.selectedProj, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
         popupContainer.style.visibility = "hidden";
-        loadTasks(selectedProj);
+        loadTasks(proj.selectedProj);
         clearTask();
         document.querySelector("body").style.backgroundColor = "transparent";
     })
