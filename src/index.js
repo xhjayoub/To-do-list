@@ -1,5 +1,5 @@
 import "./styles.css";
-import { projects, selectedProj } from "./data.js";
+import { projects, proj } from "./data.js";
 import { loadProjects, generateTaskPopup, appendToBody, loadTasks } from "./dom.js";
 
 function projAndTasks(proj, tasks) {
@@ -76,4 +76,4 @@ function InitializeTasks() {
 }
 projAndTasks(InitializeProjects(), InitializeTasks());
 generateTaskPopup();
-loadTasks(selectedProj);
+loadTasks(proj.selectedProj);

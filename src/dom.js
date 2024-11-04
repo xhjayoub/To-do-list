@@ -1,4 +1,4 @@
-import { projects, Task, selectedProj } from "./data.js";
+import { projects, Task, proj } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
 export { loadProjects, generateTask, generateTaskPopup, appendToBody, loadTasks };
 
@@ -24,6 +24,10 @@ function generateProject(projName) {
     const name = document.createElement("div");
     name.classList.add("projName");
     name.innerHTML = projName;
+    name.addEventListener("click", () => {
+        proj.selectedProj = projName;
+        loadTasks(proj.selectedProj);
+    })
     // remove button
     const rm = document.createElement("div");
     rm.classList.add("rmProj");
