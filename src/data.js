@@ -30,9 +30,3 @@ let proj = {
         this.selected = projName;
     }
 }
-
-
-// OMG I AM GOING INSANE
-// WHY EVEN proj.selected resets back to its initial value after changing
-// No more code
-// Refactor all of this shit

@@ -1,79 +1,8 @@
 import "./styles.css";
-import { projects, proj } from "./data.js";
-import { loadProjects, generateTaskPopup, appendToBody, loadTasks } from "./dom.js";
+import { proj } from "./data.js";
+import { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks} from "./dom.js";
 
-function projAndTasks(proj, tasks) {
-    const todoContainer = document.createElement("div");
-    todoContainer.classList.add("todoContainer");
 
-    todoContainer.append(proj, tasks);
-    appendToBody(todoContainer);
-}
-function InitializeProjects() {
-    const projContainer = document.createElement("div");
-    projContainer.classList.add("projContainer");
-    // Add project section
-    const addProjSect = document.createElement("div");
-    addProjSect.classList.add("projSect1");
-
-    const addProjSectTitle = document.createElement("h1");
-    addProjSectTitle.innerHTML = "Projects"
-
-    const addProjAction = document.createElement("div");
-    addProjAction.classList.add("addProj");
-    addProjAction.innerHTML = "+";
-    // add project button
-    addProjAction.addEventListener("click", () => {
-        let projName;
-        do {
-            projName = prompt("Enter project name : ");
-        } while (Object.keys(projects).includes(projName) || projName === '');
-        
-        if (projName === null) {
-            return false;
-        }
-        projects[projName] = [];
-        loadProjects(projList);
-    })
-    // Append (addProjSect) children
-    addProjSect.append(addProjSectTitle, addProjAction);
-
-    // Show projects
-    const projList = document.createElement("div");
-    loadProjects(projList);
-    // Append to projContainer
-    projContainer.append(addProjSect,projList);
-
-    return projContainer;
-}
-function InitializeTasks() {
-    // Tasks Container
-    const tasksContainer = document.createElement("div");
-    tasksContainer.classList.add("tasksContainer");
-
-    // Title
-    const projTitle = document.createElement("h1");
-    projTitle.classList.add("projTitle");
-
-    // List of tasks
-    const tasks = document.createElement("div");
-    tasks.classList.add("tasks");
-
-    // Add task action
-    const addTask = document.createElement("div");
-    addTask.classList.add("addTask");
-    addTask.innerHTML = "Add Task";
-    addTask.addEventListener("click", () => {
-        document.querySelector(".popupContainer").style.visibility = "visible";
-        document.querySelector("body").style.backgroundColor = "hsla(360 100% 0% / 0.19)";
-        // TODO: define what task
-    })
-
-    // Append everything
-    tasksContainer.append(projTitle, tasks, addTask);
-
-    return tasksContainer;
-}
 projAndTasks(InitializeProjects(), InitializeTasks());
 generateTaskPopup();
 loadTasks(proj.selectedProj);

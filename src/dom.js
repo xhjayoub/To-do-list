@@ -1,6 +1,6 @@
 import { projects, Task, proj } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
-export { loadProjects, generateTask, generateTaskPopup, appendToBody, loadTasks };
+export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks};
 
 function addTask(selectedProj, taskName, description, dueDate, priority) {
     const newTask = new Task(taskName,description,dueDate,priority);
@@ -18,8 +18,8 @@ function appendToBody(node) {
     document.querySelector("body").append(node);
 }
 function generateProject(projName) {
-    const proj = document.createElement("div");
-    proj.classList.add("proj");
+    const projContainer = document.createElement("div");
+    projContainer.classList.add("proj");
 
     const name = document.createElement("div");
     name.classList.add("projName");
@@ -39,9 +39,9 @@ function generateProject(projName) {
         el.target.parentElement.remove();
     })
     // Append everything to proj
-    proj.append(name,rm);
+    projContainer.append(name,rm);
 
-    return proj;
+    return projContainer;
 }
 function loadProjects(projList) {
     projList.innerHTML = "";
@@ -198,4 +198,77 @@ function generateTaskPopup() {
     popupContainer.append(popup);
     appendToBody(popupContainer);
 
+}
+
+function projAndTasks(proj, tasks) {
+    const todoContainer = document.createElement("div");
+    todoContainer.classList.add("todoContainer");
+
+    todoContainer.append(proj, tasks);
+    appendToBody(todoContainer);
+}
+function InitializeProjects() {
+    const projContainer = document.createElement("div");
+    projContainer.classList.add("projContainer");
+    // Add project section
+    const addProjSect = document.createElement("div");
+    addProjSect.classList.add("projSect1");
+
+    const addProjSectTitle = document.createElement("h1");
+    addProjSectTitle.innerHTML = "Projects"
+
+    const addProjAction = document.createElement("div");
+    addProjAction.classList.add("addProj");
+    addProjAction.innerHTML = "+";
+    // add project button
+    addProjAction.addEventListener("click", () => {
+        let projName;
+        do {
+            projName = prompt("Enter project name : ");
+        } while (Object.keys(projects).includes(projName) || projName === '');
+        
+        if (projName === null) {
+            return false;
+        }
+        projects[projName] = [];
+        loadProjects(projList);
+    })
+    // Append (addProjSect) children
+    addProjSect.append(addProjSectTitle, addProjAction);
+
+    // Show projects
+    const projList = document.createElement("div");
+    loadProjects(projList);
+    // Append to projContainer
+    projContainer.append(addProjSect,projList);
+
+    return projContainer;
+}
+function InitializeTasks() {
+    // Tasks Container
+    const tasksContainer = document.createElement("div");
+    tasksContainer.classList.add("tasksContainer");
+
+    // Title
+    const projTitle = document.createElement("h1");
+    projTitle.classList.add("projTitle");
+
+    // List of tasks
+    const tasks = document.createElement("div");
+    tasks.classList.add("tasks");
+
+    // Add task action
+    const addTask = document.createElement("div");
+    addTask.classList.add("addTask");
+    addTask.innerHTML = "Add Task";
+    addTask.addEventListener("click", () => {
+        document.querySelector(".popupContainer").style.visibility = "visible";
+        document.querySelector("body").style.backgroundColor = "hsla(360 100% 0% / 0.19)";
+        // TODO: define what task
+    })
+
+    // Append everything
+    tasksContainer.append(projTitle, tasks, addTask);
+
+    return tasksContainer;
 }
