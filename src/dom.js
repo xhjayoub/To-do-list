@@ -1,4 +1,4 @@
-import { projects, Task, proj } from "./data.js";
+import { projects, proj, Task , removeTask } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
 import { de } from "date-fns/locale";
 export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks};
@@ -102,6 +102,11 @@ function generateTask(task) {
     const deleteTask = document.createElement("div");
     deleteTask.classList.add("deleteTask");
     deleteTask.innerHTML = "Delete";
+    deleteTask.addEventListener("click", (e) => {
+        taskContainer.remove();
+        removeTask(proj.selectedProj, task.name);
+        loadTasks(proj.selectedProj);
+    })
 
     editActions.append(changeTask, deleteTask);
     editContainer.append(edit, editActions);
