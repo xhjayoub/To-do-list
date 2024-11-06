@@ -53,7 +53,8 @@ function generateTask(task) {
     
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("task");
-
+    // Add periority class
+    taskContainer.classList.add(task.priority);
     // Section 1
     const section1 = document.createElement("div");
     section1.classList.add("taskSect1");

@@ -40,20 +40,32 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20%;
+    gap: 50px;
+    transition: 1s;
 }
 .task {
     display: flex;
     flex-direction: column;
+    padding-top: 5px;
+    border-radius: 5px;
+    width: 100%;
 }
 .tasks {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
+    width: 40%;
 }
 .taskSect1 {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    background-color: whitesmoke;
+    padding-top: 10px;
+}
+.taskSect2 {
+    background-color: whitesmoke;
+    text-align: center;
+    padding-bottom: 5px;
 }
 .edit {
     width: 1.5rem;
@@ -84,4 +96,13 @@ body {
     background-color: snow;
     border-radius: 5%;
     box-shadow: 4px 2px 25px -3px rgba(0,0,0,0.55);
+}
+.Low {
+    background-color: blue;
+}
+.Medium {
+    background-color: yellow;
+}
+.High {
+    background-color: red;
 }
