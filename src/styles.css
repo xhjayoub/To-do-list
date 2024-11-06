@@ -43,6 +43,11 @@ body {
     gap: 50px;
     transition: 1s;
 }
+.noProj {
+    border: 1px black solid;
+    text-align: center;
+    font-style: italic;
+}
 .task {
     display: flex;
     flex-direction: column;

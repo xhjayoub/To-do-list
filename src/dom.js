@@ -10,6 +10,13 @@ function loadTasks(projName) {
     document.querySelector(".projTitle").innerHTML = projName;
     let tasksCont = document.querySelector(".tasks");
     tasksCont.innerHTML = "";
+    if (projects[projName].length === 0) {
+        const noProj = document.createElement("div");
+        noProj.classList.add("noProj");
+        noProj.innerHTML = "No tasks";
+        tasksCont.append(noProj);
+        return;
+    }
     projects[projName].forEach((task) => {
         tasksCont.append(generateTask(task));
     })
