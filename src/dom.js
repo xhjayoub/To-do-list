@@ -1,5 +1,6 @@
 import { projects, Task, proj } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
+import { de } from "date-fns/locale";
 export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks};
 
 function addTask(selectedProj, taskName, description, dueDate, priority) {
@@ -83,13 +84,29 @@ function generateTask(task) {
     taskName.innerHTML = task.name;
 
     // edit task
+    const editContainer = document.createElement("div");
+    editContainer.classList.add("editContainer");
+
     const edit = document.createElement("img");
     edit.classList.add("edit");
     edit.setAttribute("src", threeDots)
     
-    // TODO: Add edit action
+    const editActions = document.createElement("div");
+    editActions.classList.add("editActions");
+    
+    const changeTask = document.createElement("div");
+    changeTask.classList.add("changeTask");
+    changeTask.innerHTML = "Edit";
+    // TODO: add change task functionality
+
+    const deleteTask = document.createElement("div");
+    deleteTask.classList.add("deleteTask");
+    deleteTask.innerHTML = "Delete";
+
+    editActions.append(changeTask, deleteTask);
+    editContainer.append(edit, editActions);
     // Append section 1
-    section1.append(checkButton,taskName, edit);
+    section1.append(checkButton,taskName, editContainer);
 
     // Section 2 
     const section2 = document.createElement("div");
