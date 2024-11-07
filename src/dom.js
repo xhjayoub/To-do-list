@@ -98,13 +98,9 @@ function generateTask(task) {
     changeTask.classList.add("changeTask");
     changeTask.innerHTML = "Edit";
     changeTask.addEventListener("click", () => {
-        generateTaskPopup(task);
-        document.querySelector(".popupContainer").style.visibility = "visible";
+        console.log("Change task !");
     })
     // TODO: add change task functionality
-    // show edit task popup
-    // Enter values in it 
-    // Change task in real time also
 
     const deleteTask = document.createElement("div");
     deleteTask.classList.add("deleteTask");
@@ -144,32 +140,8 @@ function generateTask(task) {
     }
     return taskContainer;
 }
-function changeTaskForButton(oldTask) {
-    let taskName = document.querySelector("#taskNameInp").value;
-    let taskDesc = document.querySelector("#descriptionInp").value;
-    let taskP = document.querySelector("#priorityInp").value;
-    let taskDue = document.querySelector("#dueDateInp").value;
-    editTask(proj.selectedProj,oldTask.name,taskName, taskDesc, taskDue, taskP);
-    loadTasks(proj.selectedProj);
-    document.querySelector(".popup-Title").innerHTML = "New Task";
-    document.querySelector(".createBtn").innerHTML = "create";
-    document.querySelector(".popupContainer").style.visibility = "hidden";
-    clearTask();
-}
-function generateTaskPopup(oldTask = undefined) {
-    if (oldTask !== undefined && document.querySelector(".popupContainer")!== undefined) {
-        document.querySelector(".popup-Title").innerHTML = "Change Task";
-        document.querySelector("#taskNameInp").value = oldTask.name;
-        document.querySelector("#descriptionInp").value = oldTask.description;
-        document.querySelector("#priorityInp").value = oldTask.priority;
-        // TODO: change datepicker 
-        // click to change
-        const btn = document.querySelector(".createBtn");
-        btn.innerHTML = "Change";
-        const anon = () => {changeTaskForButton(oldTask)};
-        btn.addEventListener("click", anon);
-        return;
-    }
+
+function generateTaskPopup() {
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popupContainer");
 
