@@ -1,4 +1,4 @@
-export { projects, proj, Task, removeTask };
+export { projects, proj, Task, removeTask, editTask };
 
 class Task {
     constructor(name, description, dueDate, priority) {
@@ -29,13 +29,13 @@ function removeTask(selectedProj,taskName) {
         }
     }
 }
-function editTask(oldTaskName, taskName, description, dueDate, priority) {
+function editTask(selectedProj,oldTaskName, taskName, description, dueDate, priority) {
     for (let i = 0; i < projects[selectedProj].length; i++) {
         if (projects[selectedProj][i].name === oldTaskName) {
             projects[selectedProj][i].name = taskName;
             projects[selectedProj][i].description = description;
             projects[selectedProj][i].dueDate = dueDate;
-            projects[selectedProj][i].name = priority;
+            projects[selectedProj][i].priority = priority;
             break;
         }
     }

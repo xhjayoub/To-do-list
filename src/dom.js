@@ -1,4 +1,4 @@
-import { projects, proj, Task , removeTask } from "./data.js";
+import { projects, proj, Task , removeTask , editTask} from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
 import { de } from "date-fns/locale";
 export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks };
@@ -151,10 +151,17 @@ function generateTaskPopup(oldTask = undefined) {
         document.querySelector("#descriptionInp").value = oldTask.description;
         document.querySelector("#priorityInp").value = oldTask.priority;
         // TODO: change datepicker 
-
         // click to change
         const btn = document.querySelector(".createBtn");
         btn.innerHTML = "Change";
+        btn.addEventListener("click", () => {
+            let taskName = document.querySelector("#taskNameInp").value;
+            let taskDesc = document.querySelector("#descriptionInp").value;
+            let taskP = document.querySelector("#priorityInp").value;
+            let taskDue = document.querySelector("#dueDateInp").value;
+            editTask(proj.selectedProj,oldTask.name,taskName, taskDesc, taskDue, taskP);
+            loadTasks(proj.selectedProj);
+        })
         return;
     }
     const popupContainer = document.createElement("div");
@@ -232,6 +239,9 @@ function generateTaskPopup(oldTask = undefined) {
     createBtn.innerHTML = "Create";
     createBtn.classList.add("createBtn");
     createBtn.addEventListener("click", () => {
+        if (document.querySelector(".popup-Title").innerHTML === "Change Task") {
+            return;
+        }
         if (taskNameInp.value === "") {
             alert("Enter task name !");
             return false;
