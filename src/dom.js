@@ -144,6 +144,18 @@ function generateTask(task) {
     }
     return taskContainer;
 }
+function changeTaskForButton(oldTask) {
+    let taskName = document.querySelector("#taskNameInp").value;
+    let taskDesc = document.querySelector("#descriptionInp").value;
+    let taskP = document.querySelector("#priorityInp").value;
+    let taskDue = document.querySelector("#dueDateInp").value;
+    editTask(proj.selectedProj,oldTask.name,taskName, taskDesc, taskDue, taskP);
+    loadTasks(proj.selectedProj);
+    document.querySelector(".popup-Title").innerHTML = "New Task";
+    document.querySelector(".createBtn").innerHTML = "create";
+    document.querySelector(".popupContainer").style.visibility = "hidden";
+    clearTask();
+}
 function generateTaskPopup(oldTask = undefined) {
     if (oldTask !== undefined && document.querySelector(".popupContainer")!== undefined) {
         document.querySelector(".popup-Title").innerHTML = "Change Task";
@@ -154,14 +166,8 @@ function generateTaskPopup(oldTask = undefined) {
         // click to change
         const btn = document.querySelector(".createBtn");
         btn.innerHTML = "Change";
-        btn.addEventListener("click", () => {
-            let taskName = document.querySelector("#taskNameInp").value;
-            let taskDesc = document.querySelector("#descriptionInp").value;
-            let taskP = document.querySelector("#priorityInp").value;
-            let taskDue = document.querySelector("#dueDateInp").value;
-            editTask(proj.selectedProj,oldTask.name,taskName, taskDesc, taskDue, taskP);
-            loadTasks(proj.selectedProj);
-        })
+        const anon = () => {changeTaskForButton(oldTask)};
+        btn.addEventListener("click", anon);
         return;
     }
     const popupContainer = document.createElement("div");
