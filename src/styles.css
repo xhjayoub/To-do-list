@@ -1,4 +1,4 @@
-.popupContainer {
+.popupContainer, .editPopupContainer {
     position: absolute;
     visibility: hidden;
     top: -5vh;

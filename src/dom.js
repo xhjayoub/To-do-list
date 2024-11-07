@@ -1,7 +1,7 @@
 import { projects, proj, Task , removeTask } from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
 import { de } from "date-fns/locale";
-export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks};
+export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks };
 
 function addTask(selectedProj, taskName, description, dueDate, priority) {
     const newTask = new Task(taskName,description,dueDate,priority);
@@ -97,7 +97,14 @@ function generateTask(task) {
     const changeTask = document.createElement("div");
     changeTask.classList.add("changeTask");
     changeTask.innerHTML = "Edit";
+    changeTask.addEventListener("click", () => {
+        generateTaskPopup(task);
+        document.querySelector(".popupContainer").style.visibility = "visible";
+    })
     // TODO: add change task functionality
+    // show edit task popup
+    // Enter values in it 
+    // Change task in real time also
 
     const deleteTask = document.createElement("div");
     deleteTask.classList.add("deleteTask");
@@ -137,7 +144,19 @@ function generateTask(task) {
     }
     return taskContainer;
 }
-function generateTaskPopup() {
+function generateTaskPopup(oldTask = undefined) {
+    if (oldTask !== undefined && document.querySelector(".popupContainer")!== undefined) {
+        document.querySelector(".popup-Title").innerHTML = "Change Task";
+        document.querySelector("#taskNameInp").value = oldTask.name;
+        document.querySelector("#descriptionInp").value = oldTask.description;
+        document.querySelector("#priorityInp").value = oldTask.priority;
+        // TODO: change datepicker 
+
+        // click to change
+        const btn = document.querySelector(".createBtn");
+        btn.innerHTML = "Change";
+        return;
+    }
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popupContainer");
 
@@ -145,6 +164,7 @@ function generateTaskPopup() {
     popup.classList.add("popup");
 
     const title = document.createElement("h2");
+    title.classList.add("popup-Title");
     title.innerHTML = "New Task";
 
     // Task name
@@ -174,6 +194,7 @@ function generateTaskPopup() {
     const PeriorityLabel = document.createElement("label");
     PeriorityLabel.innerHTML = "Periority";
     const PeriorityList = document.createElement("select");
+    PeriorityList.setAttribute("id", "priorityInp");
     const pList = ["Low","Medium", "High"];
     pList.forEach((element) => {
         const p = document.createElement("option");
@@ -188,7 +209,7 @@ function generateTaskPopup() {
     dueDateLabel.innerHTML = "Due Date";
     const dueDateInp = document.createElement("input");
     dueDateInp.setAttribute("type","date");
-    
+    dueDateInp.setAttribute("id", "dueDateInp");
     dueDate.append(dueDateLabel, dueDateInp);
 
     // Buttons
@@ -209,6 +230,7 @@ function generateTaskPopup() {
 
     const createBtn = document.createElement("button");
     createBtn.innerHTML = "Create";
+    createBtn.classList.add("createBtn");
     createBtn.addEventListener("click", () => {
         if (taskNameInp.value === "") {
             alert("Enter task name !");

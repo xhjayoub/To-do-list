@@ -29,6 +29,17 @@ function removeTask(selectedProj,taskName) {
         }
     }
 }
+function editTask(oldTaskName, taskName, description, dueDate, priority) {
+    for (let i = 0; i < projects[selectedProj].length; i++) {
+        if (projects[selectedProj][i].name === oldTaskName) {
+            projects[selectedProj][i].name = taskName;
+            projects[selectedProj][i].description = description;
+            projects[selectedProj][i].dueDate = dueDate;
+            projects[selectedProj][i].name = priority;
+            break;
+        }
+    }
+}
 let proj = {
     selected: Object.keys(projects)[0],
     get selectedProj() {
