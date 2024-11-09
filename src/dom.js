@@ -46,6 +46,9 @@ function generateProject(projName) {
         let projName = el.target.parentElement.firstChild.innerHTML;
         delete projects[projName];
         el.target.parentElement.remove();
+        proj.selectedProj = Object.keys(projects)[0];
+        loadTasks(proj.selectedProj);
+        updateLocalStorage(projects);
     })
     // Append everything to proj
     projContainer.append(name,rm);
