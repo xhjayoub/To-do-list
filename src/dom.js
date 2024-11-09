@@ -1,6 +1,6 @@
 import { projects, proj, Task , removeTask , editTask} from "./data.js";
-import threeDots from "./assets/three-dots-vertical-svgrepo-com.png"
-import { de } from "date-fns/locale";
+import threeDots from "./assets/three-dots-vertical-svgrepo-com.png";
+import {format} from "date-fns";
 export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks };
 
 function addTask(selectedProj, taskName, description, dueDate, priority) {
@@ -125,12 +125,9 @@ function generateTask(task) {
 
     const dueDate = document.createElement("div");
     dueDate.classList.add("dueDate");
-    if (task.dueDate === "") {
-        dueDate.innerHTML = "No due date.";
-    } else {
-        dueDate.innerHTML = task.dueDate;
-    }
-    
+    let today = new Date();
+    let TheDueDate = new Date(task.dueDate.substring(0,4), Number(task.dueDate.substring(5,7))-1,task.dueDate.substring(8,));
+    dueDate.innerHTML = format(TheDueDate, "MM/dd/yyyy");    
 
     // Append section 2
     section2.append(dueDate);

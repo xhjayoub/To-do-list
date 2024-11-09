@@ -17,7 +17,7 @@ class Task {
 }
 
 let projects = {
-    Home:[new Task("Clean the house","","","Low"), new Task("go out","to the beach","12-10-2022","Low")],
+    Home:[],
     Work:[],
     Fitness:[]
 }
