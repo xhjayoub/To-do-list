@@ -1,4 +1,4 @@
-import { projects, proj, Task , removeTask , editTask} from "./data.js";
+import { projects, proj, Task , removeTask , editTask, updateLocalStorage} from "./data.js";
 import threeDots from "./assets/three-dots-vertical-svgrepo-com.png";
 import {format} from "date-fns";
 export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, projAndTasks };
@@ -6,6 +6,7 @@ export { loadTasks, generateTaskPopup, InitializeProjects, InitializeTasks, proj
 function addTask(selectedProj, taskName, description, dueDate, priority) {
     const newTask = new Task(taskName,description,dueDate,priority);
     projects[selectedProj].push(newTask);
+    updateLocalStorage(projects);
 }
 function loadTasks(projName) {
     document.querySelector(".projTitle").innerHTML = projName;
@@ -71,12 +72,13 @@ function generateTask(task) {
     checkButton.setAttribute("type","checkbox");
     checkButton.addEventListener("click",() => {
         if (checkButton.checked) {
-            task.makeItDone();
+            task.done = true;
             taskContainer.classList.add("done");
         } else {
-            task.makeItUndone();
+            task.done = false;
             taskContainer.classList.remove("done");
         }
+        updateLocalStorage(projects);
     })
 
     const taskName = document.createElement("div");

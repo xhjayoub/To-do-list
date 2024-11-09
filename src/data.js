@@ -1,4 +1,4 @@
-export { projects, proj, Task, removeTask, editTask };
+export { projects, proj, Task, removeTask, editTask, updateLocalStorage };
 
 class Task {
     constructor(name, description, dueDate, priority) {
@@ -6,20 +6,25 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.makeItUndone();
+        this.done = false;
     } 
     makeItDone() {
+        updateLocalStorage(projects);
         this.done = true;
     }
     makeItUndone() {
+        updateLocalStorage(projects);
         this.done = false
     }
 }
-
-let projects = {
-    Home:[],
-    Work:[],
-    Fitness:[]
+if (localStorage.getItem("projects") !== null) {
+    var projects = JSON.parse(localStorage.getItem("projects"));
+} else {
+    var projects = {
+        Home:[],
+        Work:[],
+        Fitness:[]
+    }
 }
 function removeTask(selectedProj,taskName) {
     for (let i = 0; i < projects[selectedProj].length; i++) {
@@ -28,6 +33,7 @@ function removeTask(selectedProj,taskName) {
             break;
         }
     }
+    updateLocalStorage(projects);
 }
 function editTask(selectedProj,oldTaskName, taskName, description, dueDate, priority) {
     for (let i = 0; i < projects[selectedProj].length; i++) {
@@ -39,6 +45,7 @@ function editTask(selectedProj,oldTaskName, taskName, description, dueDate, prio
             break;
         }
     }
+    updateLocalStorage(projects);
 }
 let proj = {
     selected: Object.keys(projects)[0],
@@ -49,3 +56,7 @@ let proj = {
         this.selected = projName;
     }
 }
+function updateLocalStorage(projects) {
+    localStorage.setItem("projects", JSON.stringify(projects));
+}
+updateLocalStorage(projects);
