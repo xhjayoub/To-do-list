@@ -99,6 +99,7 @@ function generateTask(task) {
     changeTask.innerHTML = "Edit";
     changeTask.addEventListener("click", () => {
         console.log("Change task !");
+        generateEditTaskPopup(task);
     })
     // TODO: add change task functionality
 
@@ -217,9 +218,6 @@ function generateTaskPopup() {
     createBtn.innerHTML = "Create";
     createBtn.classList.add("createBtn");
     createBtn.addEventListener("click", () => {
-        if (document.querySelector(".popup-Title").innerHTML === "Change Task") {
-            return;
-        }
         if (taskNameInp.value === "") {
             alert("Enter task name !");
             return false;
@@ -304,7 +302,6 @@ function InitializeTasks() {
     addTask.addEventListener("click", () => {
         document.querySelector(".popupContainer").style.visibility = "visible";
         document.querySelector("#taskNameInp").focus();
-        document.querySelector("body").style.backgroundColor = "hsla(360 100% 0% / 0.19)";
         // TODO: define what task
     })
 
@@ -312,4 +309,103 @@ function InitializeTasks() {
     tasksContainer.append(projTitle, tasks, addTask);
 
     return tasksContainer;
+}
+
+function generateEditTaskPopup(task) {
+    const popupContainer = document.createElement("div");
+    popupContainer.classList.add("editPopupContainer");
+
+    const popup = document.createElement("div");
+    popup.classList.add("popup");
+
+    const title = document.createElement("h2");
+    title.classList.add("popup-Title");
+    title.innerHTML = "Change Task";
+
+    // Task name
+    const taskName = document.createElement("div");
+    const taskNameLabel = document.createElement("label");
+    taskNameLabel.innerHTML = "What is to be done?";
+    taskNameLabel.setAttribute("for","taskNameInp");
+    const taskNameInp = document.createElement("input");
+    taskNameInp.setAttribute("type","text");
+    taskNameInp.setAttribute("id","taskNameInp");
+    taskNameInp.value = task.name;
+
+    taskName.append(taskNameLabel, taskNameInp);
+
+    // Description
+    const description = document.createElement("div");
+    const descriptionLabel = document.createElement("label");
+    descriptionLabel.innerHTML = "Description (optional)";
+    descriptionLabel.setAttribute("for","descriptionInp");
+    const descriptionInp = document.createElement("input");
+    descriptionInp.setAttribute("type","text");
+    descriptionInp.setAttribute("id","descriptionInp");
+    descriptionInp.value = task.description;
+    description.append(descriptionLabel, descriptionInp);
+
+    // Periority
+    const Periority = document.createElement("div");
+    const PeriorityLabel = document.createElement("label");
+    PeriorityLabel.innerHTML = "Periority";
+    const PeriorityList = document.createElement("select");
+    PeriorityList.setAttribute("id", "priorityInp");
+    const pList = ["Low","Medium", "High"];
+    pList.forEach((element) => {
+        const p = document.createElement("option");
+        p.innerHTML = element;
+        PeriorityList.append(p);
+    });
+    PeriorityList.value = task.priority;
+    Periority.append(PeriorityLabel, PeriorityList);
+
+    // Due Date
+    const dueDate = document.createElement("div");
+    const dueDateLabel = document.createElement("label");
+    dueDateLabel.innerHTML = "Due Date";
+    const dueDateInp = document.createElement("input");
+    dueDateInp.setAttribute("type","date");
+    dueDateInp.setAttribute("id", "dueDateInp");
+    dueDateInp.value = task.dueDate;
+    dueDate.append(dueDateLabel, dueDateInp);
+
+    // Buttons
+    const btnCont = document.createElement("div");
+    const cancel = document.createElement("button");
+    cancel.innerHTML = "Cancel";
+    function clearTask() {
+        taskNameInp.value = "";
+        descriptionInp.value = "";
+        PeriorityList.value = "Low";
+        dueDateInp.value = "";
+    }
+    cancel.addEventListener("click", () => {
+        clearTask();
+        popupContainer.style.visibility = "hidden";
+        document.querySelector("body").style.backgroundColor = "transparent";
+    })
+
+    const createBtn = document.createElement("button");
+    createBtn.innerHTML = "Change";
+    createBtn.classList.add("createBtn");
+    createBtn.addEventListener("click", () => {
+        if (taskNameInp.value === "") {
+            alert("Enter task name !");
+            return false;
+        }
+        editTask(proj.selectedProj,task.name, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
+        popupContainer.style.visibility = "hidden";
+        loadTasks(proj.selectedProj);
+        popupContainer.remove();
+        document.querySelector("body").style.backgroundColor = "transparent";
+    })
+
+    btnCont.append(cancel,createBtn);
+
+    // Append to popup
+    popup.append(title,taskName,description,Periority,dueDate,btnCont);
+    popupContainer.append(popup);
+    appendToBody(popupContainer);
+
 }
