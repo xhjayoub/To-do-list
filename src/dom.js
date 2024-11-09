@@ -98,7 +98,9 @@ function generateTask(task) {
     changeTask.classList.add("changeTask");
     changeTask.innerHTML = "Edit";
     changeTask.addEventListener("click", () => {
-        console.log("Change task !");
+        if (task.done) {
+            return;
+        }
         generateEditTaskPopup(task);
     })
     // TODO: add change task functionality
