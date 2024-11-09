@@ -224,6 +224,10 @@ function generateTaskPopup() {
             alert("Enter task name !");
             return false;
         }
+        if (dueDateInp.value === "") {
+            alert("Enter due date !");
+            return false;
+        }
         addTask(proj.selectedProj, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
         popupContainer.style.visibility = "hidden";
         loadTasks(proj.selectedProj);
@@ -394,6 +398,10 @@ function generateEditTaskPopup(task) {
     createBtn.addEventListener("click", () => {
         if (taskNameInp.value === "") {
             alert("Enter task name !");
+            return false;
+        }
+        if (dueDateInp.value === "") {
+            alert("Enter due date !");
             return false;
         }
         editTask(proj.selectedProj,task.name, taskNameInp.value,descriptionInp.value,dueDateInp.value,PeriorityList.value);
