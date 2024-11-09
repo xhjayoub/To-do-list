@@ -1,56 +1,25 @@
-.popupContainer, .editPopupContainer {
-    position: absolute;
-    visibility: hidden;
-    top: -5vh;
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-.editPopupContainer {
-    visibility: visible;
-}
-.popup {
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-}
-body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
+/* 
+
 .done {
     opacity: 50%;
 }
 .task, .done {
     transition: 0.5s;
 }
-.todoContainer {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    height: 100%;
-}
-.tasksContainer {
-    padding: 20px;
+
+
+
+.projTitle, .tasks {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 50px;
-    transition: 1s;
+    justify-content: center;
+    place-self: center;
 }
-.noProj {
-    border: 1px black solid;
-    text-align: center;
-    font-style: italic;
+#addtask {
+    height: 20px;
 }
+
+
 .task {
     display: flex;
     flex-direction: column;
@@ -64,41 +33,16 @@ body {
     gap: 15px;
     width: 40%;
 }
-.taskSect1 {
-    display: grid;
-    grid-template-columns: 5% 90% 5%;
-    background-color: whitesmoke;
-    padding-top: 10px;
-}
+
 .taskSect2 {
     background-color: whitesmoke;
     text-align: center;
     padding-bottom: 5px;
 }
-.edit {
-    width: 1.5rem;
-    height: auto;
-}
-.projContainer {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.projSect1 {
-    display: flex;
-    text-align: center;
-    gap: 10px;
-}
-.addProj {
-    font-size: 3rem;
-    align-self: center;
-}
-.proj {
-    display: flex;
-    gap: 1rem;
-}
+
+
+
+
 
 .popup {
     background-color: snow;
@@ -130,4 +74,151 @@ body {
 }
 .editContainer:hover .editActions {
     display: block;
+} */
+:root {
+    --primary: #F5F5F5;
+    --secondary: #F05454;
+    --ternary: #30475E;
+    --forth: #121212;
+ }
+
+.projContainer {
+    margin: 0;
+    border-right: 1px black solid;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.projContainer * {
+    margin-left: 10%;
+}
+.projSect1 {
+    margin-left: 0%;
+}
+.todoContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 100%;
+}
+.projSect1 {
+    display: flex;
+    text-align: center;
+    gap: 10px;
+}
+.addProj {
+    font-size: 3rem;
+    align-self: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+.addProj:hover {
+    opacity: 0.9;
+    transition: 0.2s;
+}
+.projects {
+    display: grid;
+    gap: 10px;
+}
+.proj {
+    width: 50%;
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--primary);
+}
+.proj:hover {
+    opacity: 0.8;
+}
+.rmProj {
+    opacity: 0;
+    transition: 0.2s;
+    color: var(--ternary);
+    margin-left: auto;
+}
+.proj:hover .rmProj {
+    transition: 0.5s;
+    opacity: 0.8;
+}
+.tasksContainer {
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-columns: 100%;
+    justify-content: center;
+    padding: 20px;
+}
+.edit {
+    width: 1.5rem;
+    height: auto;
+}
+
+.noProj {
+    border: 1px black solid;
+    text-align: center;
+    font-style: italic;
+}
+.projTitle {
+    display: flex;
+    justify-content: center;
+    color: var(--forth);
+}
+.addTaskCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+#addTask {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+    color: var(--primary);
+    background-color: var(--ternary);
+}
+#addTask:hover {
+    opacity: 0.5;
+    transition: 0.5s;
+}
+.tasks.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noProj {
+    width: 100%;
+}
+
+.popupContainer, .editPopupContainer {
+    position: absolute;
+    visibility: hidden;
+    top: -5vh;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.editPopupContainer {
+    visibility: visible;
+}
+.popup {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: var(--primary);
 }
