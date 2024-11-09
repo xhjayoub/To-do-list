@@ -281,6 +281,7 @@ function InitializeProjects() {
 
     // Show projects
     const projList = document.createElement("div");
+    projList.classList.add("projects");
     loadProjects(projList);
     // Append to projContainer
     projContainer.append(addProjSect,projList);
@@ -301,17 +302,20 @@ function InitializeTasks() {
     tasks.classList.add("tasks");
 
     // Add task action
+    const addTaskCont = document.createElement("div");
     const addTask = document.createElement("div");
-    addTask.classList.add("addTask");
+    addTask.id = "addTask";
     addTask.innerHTML = "Add Task";
     addTask.addEventListener("click", () => {
         document.querySelector(".popupContainer").style.visibility = "visible";
         document.querySelector("#taskNameInp").focus();
         // TODO: define what task
     })
+    addTaskCont.classList.add("addTaskCont");
+    addTaskCont.append(addTask);
 
     // Append everything
-    tasksContainer.append(projTitle, tasks, addTask);
+    tasksContainer.append(projTitle, tasks, addTaskCont);
 
     return tasksContainer;
 }
