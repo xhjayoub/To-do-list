@@ -113,7 +113,7 @@ function generateTask(task) {
     const deleteTask = document.createElement("div");
     deleteTask.classList.add("deleteTask");
     deleteTask.innerHTML = "Delete";
-    deleteTask.addEventListener("click", (e) => {
+    deleteTask.addEventListener("click", () => {
         taskContainer.remove();
         removeTask(proj.selectedProj, task.name);
         loadTasks(proj.selectedProj);
@@ -130,7 +130,6 @@ function generateTask(task) {
 
     const dueDate = document.createElement("div");
     dueDate.classList.add("dueDate");
-    let today = new Date();
     let TheDueDate = new Date(task.dueDate.substring(0,4), Number(task.dueDate.substring(5,7))-1,task.dueDate.substring(8,));
     dueDate.innerHTML = format(TheDueDate, "MM/dd/yyyy");    
 
