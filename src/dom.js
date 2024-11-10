@@ -12,6 +12,11 @@ function loadTasks(projName) {
     document.querySelector(".projTitle").innerHTML = projName;
     let tasksCont = document.querySelector(".tasks");
     tasksCont.innerHTML = "";
+    // TODO: handle this situation
+    if (Object.keys(projects).length === 0) {
+        console.log("No projects");
+        return;
+    }
     if (projects[projName].length === 0) {
         const noProj = document.createElement("div");
         noProj.classList.add("noProj");
@@ -275,8 +280,11 @@ function InitializeProjects() {
         if (projName === null) {
             return false;
         }
+        proj.selectedProj = projName;
         projects[projName] = [];
         loadProjects(projList);
+        loadTasks(proj.selectedProj);
+        updateLocalStorage(projects);
     })
     // Append (addProjSect) children
     addProjSect.append(addProjSectTitle, addProjAction);
