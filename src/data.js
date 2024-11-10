@@ -17,7 +17,8 @@ class Task {
         this.done = false
     }
 }
-if (localStorage.getItem("projects") !== null) {
+
+if (localStorage.getItem("projects") !== null && Object.keys(JSON.parse(localStorage.getItem("projects"))).length !== 0) {
     var projects = JSON.parse(localStorage.getItem("projects"));
 } else {
     var projects = {
